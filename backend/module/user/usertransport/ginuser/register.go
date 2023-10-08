@@ -16,7 +16,7 @@ import (
 func Register(appCtx appctx.AppContext) func(*gin.Context) {
 	return func(c *gin.Context) {
 		db := appCtx.GetMainDBConnection()
-		var data usermodel.UserCreate
+		var data usermodel.User
 
 		if err := c.ShouldBind(&data); err != nil {
 			panic(common.ErrInvalidRequest(err))
@@ -29,7 +29,7 @@ func Register(appCtx appctx.AppContext) func(*gin.Context) {
 		biz := userbusiness.NewRegisterBusiness(store, md5)
 
 		if err := biz.Register(c.Request.Context(), &data); err != nil {
-			panic(common.ErrCannotCreateEntity(data.Email, err))
+			panic(common.ErrCannotCreateEntity(data.Username, err))
 		}
 
 		data.Mask(false)

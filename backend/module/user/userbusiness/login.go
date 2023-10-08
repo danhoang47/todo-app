@@ -38,10 +38,10 @@ func NewLoginBusiness(
 }
 
 func (biz *loginBusiness) Login(ctx context.Context, data *usermodel.UserLogin) (*tokenprovider.Token, error) {
-	user, err := biz.storeUser.FindUser(ctx, map[string]any{"email": data.Email})
+	user, err := biz.storeUser.FindUser(ctx, map[string]any{"username": data.Username})
 
 	if err != nil {
-		return nil, usermodel.ErrEmailOrPasswordInvalid
+		return nil, usermodel.ErrUsernameOrPasswordInvalid
 	}
 
 	log.Println(data.Password)
@@ -50,7 +50,7 @@ func (biz *loginBusiness) Login(ctx context.Context, data *usermodel.UserLogin) 
 	log.Println(passHashed)
 
 	if passHashed != user.Password {
-		return nil, usermodel.ErrEmailOrPasswordInvalid
+		return nil, usermodel.ErrUsernameOrPasswordInvalid
 	}
 
 	payload := tokenprovider.TokenPayload{

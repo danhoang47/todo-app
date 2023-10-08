@@ -12,7 +12,7 @@ type RegisterStorage interface {
 		conditions map[string]interface{},
 		moreInfor ...string,
 	) (*usermodel.User, error)
-	CreateUser(ctx context.Context, data *usermodel.UserCreate) error
+	CreateUser(ctx context.Context, data *usermodel.User) error
 }
 
 type Hasher interface {
@@ -31,15 +31,15 @@ func NewRegisterBusiness(registerStorage RegisterStorage, hasher Hasher) *regist
 	}
 }
 
-func (biz *registerBusiness) Register(ctx context.Context, data *usermodel.UserCreate) error {
-	user, _ := biz.registerStorage.FindUser(ctx, map[string]any{"email": data.Email})
+func (biz *registerBusiness) Register(ctx context.Context, data *usermodel.User) error {
+	user, _ := biz.registerStorage.FindUser(ctx, map[string]any{"username": data.Username})
 
 	if user != nil {
 		// if user.Status == 0 {
 		// 	return err user has been disabled
 		// }
 
-		return usermodel.ErrEmailExisted(user.Email)
+		return usermodel.ErrUsernameExisted(user.Username)
 	}
 
 	salt := common.GetSalt(50)
