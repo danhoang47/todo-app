@@ -3,7 +3,8 @@ import { useState, createContext, useCallback, useContext } from 'react'
 export type CollapseProps = {
     visible: boolean,
     direction?: 'vertical' | 'horizontal',
-    children: React.ReactNode
+    children: React.ReactNode,
+    className?: string
 }
 
 export type CollapseContextType = {
@@ -22,7 +23,7 @@ function CollapseTrigger({ renderTrigger }: { renderTrigger: (onClick: () => voi
     )
 }
 
-function Collapse({ visible, direction = 'vertical', children }: CollapseProps) {
+function Collapse({ visible, direction = 'vertical', children, className = '' }: CollapseProps) {
     const [isVisible, setVisible] = useState(visible)
     const expandClassName = direction === 'vertical' ? 'h-0' : 'w-0' 
 
@@ -32,7 +33,7 @@ function Collapse({ visible, direction = 'vertical', children }: CollapseProps) 
 
     return (  
         <CollapseContext.Provider value={{ onTriggerButtonClick }}>
-            <div className={`${!isVisible ? expandClassName : ''} transition-all`}>
+            <div className={`${!isVisible ? expandClassName : ''} transition-all ${className}`}>
                 {children}
             </div>
         </CollapseContext.Provider>
