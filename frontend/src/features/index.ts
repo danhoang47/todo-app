@@ -1,6 +1,6 @@
-import MenuBar from "./menu_bar";
+import Menu from "./menu";
 
 export {
-    MenuBar
+    Menu
 }
 

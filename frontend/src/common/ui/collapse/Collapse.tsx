@@ -1,45 +1,72 @@
-import { useState, createContext, useCallback, useContext } from 'react'
+import {
+	useState,
+	createContext,
+	useCallback,
+	useContext,
+	useMemo,
+} from "react";
 
 export type CollapseProps = {
-    visible: boolean,
-    direction?: 'vertical' | 'horizontal',
-    children: React.ReactNode,
-    className?: string
-}
+	visible: boolean;
+	direction?: "vertical" | "horizontal";
+	children: React.ReactNode;
+	className?: string;
+	visibleClsx?: string;
+	invisibleClsx?: string;
+};
 
 export type CollapseContextType = {
-    onTriggerButtonClick: () => void
+	isVisible: boolean;
+	onTriggerButtonClick: () => void;
+};
+
+const CollapseContext = createContext<CollapseContextType | undefined>(
+	undefined
+);
+
+function CollapseTrigger({
+	renderTrigger,
+}: {
+	renderTrigger: (isVisible: boolean, onClick: () => void) => React.ReactNode;
+}) {
+	const { isVisible, onTriggerButtonClick } = useContext(CollapseContext)!;
+
+	return <>{renderTrigger(isVisible, onTriggerButtonClick)}</>;
 }
 
-const CollapseContext = createContext<CollapseContextType | undefined>(undefined) 
+function Collapse({
+	visible,
+	children,
+	className = "",
+	visibleClsx = "",
+	invisibleClsx = "",
+}: CollapseProps) {
+	const [isVisible, setVisible] = useState(visible);
+	const expandClassName = useMemo(() => isVisible ? visibleClsx : invisibleClsx, [isVisible])
 
-function CollapseTrigger({ renderTrigger }: { renderTrigger: (onClick: () => void) => React.ReactNode }) {
-    const { onTriggerButtonClick } = useContext(CollapseContext)!
+	const onTriggerButtonClick = useCallback(() => {
+		setVisible((prev) => !prev);
+	}, []);
 
-    return (
-        <>
-            {renderTrigger(onTriggerButtonClick)}
-        </>
-    )
+	const collapseContextValue = useMemo(
+		() => ({
+			isVisible,
+			onTriggerButtonClick,
+		}),
+		[isVisible, onTriggerButtonClick]
+	);
+
+	return (
+		<CollapseContext.Provider value={collapseContextValue}>
+			<div
+				className={`transition-all overflow-x-hidden ${className} ${expandClassName}`}
+			>
+				{children}
+			</div>
+		</CollapseContext.Provider>
+	);
 }
 
-function Collapse({ visible, direction = 'vertical', children, className = '' }: CollapseProps) {
-    const [isVisible, setVisible] = useState(visible)
-    const expandClassName = direction === 'vertical' ? 'h-0' : 'w-0' 
-
-    const onTriggerButtonClick = useCallback(() => {
-        setVisible(prev => !prev)
-    }, [])
-
-    return (  
-        <CollapseContext.Provider value={{ onTriggerButtonClick }}>
-            <div className={`${!isVisible ? expandClassName : ''} transition-all ${className}`}>
-                {children}
-            </div>
-        </CollapseContext.Provider>
-    );
-}
-
-Collapse.Trigger = CollapseTrigger
+Collapse.Trigger = CollapseTrigger;
 
 export default Collapse;
