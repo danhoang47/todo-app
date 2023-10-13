@@ -1,15 +1,18 @@
 import { Outlet } from "react-router-dom";
 
-import { Menu } from "@/features";
+import { Navbar } from "@/features";
+
+import "./Home.style.scss"
 
 function Home() {
+
 	console.log(`${Home.name} re-render`);
 	return (
-		<div className="flex">
-			<Menu />
-			<div className="flex-grow">
+		<div id="home">
+			<Navbar />
+			<main>
 				<Outlet />
-			</div>
+			</main>
 		</div>
 	);
 }

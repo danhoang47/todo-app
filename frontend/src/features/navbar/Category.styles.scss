@@ -1,0 +1,51 @@
+
+.categoryOptions {
+    padding: 1rem 0;
+
+    .categoryHeader {
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0 1.6rem;
+    }
+
+    .categoryItemList {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0.8rem;
+        gap: 0.1rem;
+
+        .categoryItem {
+            display: flex;
+            gap: 0.8rem;
+            cursor: pointer;
+            padding: 0.6rem 0.8rem;
+            position: relative;
+            align-items: center;
+
+            &.selected {
+            }
+
+            .listItemColor {
+                display: block;
+                width: 8%;
+                min-width: 1rem;
+                aspect-ratio: 1/1;
+                border-radius: 0.2rem;
+            }
+
+            .categoryItemTitle {
+                text-transform: capitalize;
+            }
+
+            &:hover,
+            &:focus {
+                outline: none;
+                background-color: rgb(102, 102, 102);
+                border-radius: 9999px;
+                color: white;
+            }
+        }
+    }
+}

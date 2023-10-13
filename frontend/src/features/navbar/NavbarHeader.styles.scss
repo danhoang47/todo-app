@@ -1,0 +1,24 @@
+
+.header {
+    padding: 1.4rem 1.6rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    .userInfor {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+
+        .userAvatar {
+            width: 2rem;
+            aspect-ratio: 1 / 1;
+            background-color: rgb(72, 16, 6);
+            border-radius: 50%;
+        }
+        
+        .userName {
+            overflow-x: hidden;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+    }
+}

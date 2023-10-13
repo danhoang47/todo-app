@@ -1,0 +1,48 @@
+#navbar {
+	container: navbar / inline-size;
+	position: sticky;
+	height: 100vh;
+	border-right: 1px solid #e0e0e0;
+	color: black;
+	transition: width 0.15s linear;
+
+	&.expand {
+		width: 16rem;
+	}
+
+	&.collapse {
+		width: 4.2rem;
+
+		.header {
+            padding: 0.6rem 0.4rem;
+
+            .userAvatar {
+                margin: 0 auto;
+            }
+
+			.userInfor {
+				.userName {
+					display: none;
+				}
+			}
+		}
+
+		.categoryOptions {
+			.categoryHeader {
+				display: none;
+			}
+
+			.categoryItem {
+				.categoryItemTitle {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.expandMenuBtn {
+		position: absolute;
+		bottom: 1.4rem;
+		right: 1.6rem;
+	}
+}
