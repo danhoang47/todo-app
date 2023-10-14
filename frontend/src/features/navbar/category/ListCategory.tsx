@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import Category from "./Category";
 
 const lists = [
@@ -30,6 +33,14 @@ function ListCategory() {
 						style={{ backgroundColor: list.color }}
 					/>
 					<p className="categoryItemTitle">{list.title}</p>
+				</div>
+			)}
+			extraItem={(
+				<div className="categoryItem" tabIndex={0}>
+					<span>
+						<FontAwesomeIcon icon={faPlus} />
+					</span>
+					<p className="categoryItemTitle">Add New List</p>
 				</div>
 			)}
 		/>

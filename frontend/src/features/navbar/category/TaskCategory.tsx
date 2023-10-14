@@ -22,7 +22,7 @@ function TaskCategory() {
 					}}
 				>
 					<span>
-						<FontAwesomeIcon icon={task.icon} />
+						<FontAwesomeIcon icon={task.icon} className='icon'/>
 					</span>
 					<p className="categoryItemTitle">{task.title}</p>
 				</div>

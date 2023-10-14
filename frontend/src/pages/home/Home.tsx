@@ -1,6 +1,7 @@
+import { createPortal } from 'react-dom'
 import { Outlet } from "react-router-dom";
 
-import { Navbar } from "@/features";
+import { Navbar, UserLoginSignup } from "@/features";
 
 import "./Home.style.scss"
 
@@ -13,6 +14,7 @@ function Home() {
 			<main>
 				<Outlet />
 			</main>
+			{createPortal(<UserLoginSignup />, document.body)}
 		</div>
 	);
 }

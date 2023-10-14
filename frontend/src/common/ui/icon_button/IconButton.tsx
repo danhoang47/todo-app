@@ -8,7 +8,7 @@ export type IconButtonProps = FontAwesomeIconProps & {
 
 function IconButton({ onClick, buttonClassName = '', children, ...props }: IconButtonProps) {
     return (  
-        <button onClick={onClick} className={buttonClassName}>
+        <button onClick={onClick} className={buttonClassName} tabIndex={0}>
             <FontAwesomeIcon {...props}/>
             {children}
         </button>

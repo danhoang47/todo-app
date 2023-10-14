@@ -1,0 +1,158 @@
+
+#userLoginSignupForm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 28rem;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: black;
+    border-radius: 1rem;
+
+    @media all and (max-width: 430px) {
+        bottom: 0;
+        top: unset;
+        left: unset;
+        transform: translate(0, 0);
+        border-radius: 0;
+    }
+
+    .modal {
+        padding: 3rem;
+
+        @media all and (max-width: 430px) {
+            padding: 1rem;
+        }
+        
+        .modalHeader {
+            text-align: center;
+            margin-bottom: 2rem;
+
+            .modalHeading {
+                margin: 0.4rem 0;
+            }
+
+            .modalSubHeading {
+                font-weight: 400;
+                color: gray;
+            }
+        }
+
+        .modalBody {
+
+            .socialLoginOptionList {
+                margin-bottom: 1.6rem;
+                
+                .socialLoginButton {
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 0.6rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.6rem;
+                    border: 1px solid rgb(163, 163, 163);
+                    padding: 0.6rem 0;
+                    border-radius: 0.6rem;
+                    transition: all 0.15s linear;
+                    color: rgb(116, 116, 116);
+
+                    .svg-inline--fa {
+                        font-size: 1.2rem;
+                    }
+
+                    &:hover {
+                        border-color: black;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: rgb(163, 163, 163);
+        margin-bottom: 1.6rem;
+        
+        &::before, &::after {
+            flex: 1;
+            content: '';
+            background-color: rgb(163, 163, 163);
+            padding: 0.5px;
+            margin-top: 3px;
+        }
+    }
+
+    .form {
+        .inputField {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 0.6rem;
+
+            label {
+                color: rgb(116, 116, 116);
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+
+            input {
+                padding: 0.6rem;
+                border: 1px solid rgb(163, 163, 163);
+                border-radius: 0.6rem;
+                transition: all 0.15s linear;
+
+                &:focus {
+                    border-color: black;
+                    color: black;
+                }
+            }
+        }
+
+        .checkBoxField {
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+            justify-content: start;
+            gap: 0.6rem;
+
+            label {
+                font-size: 0.9rem;
+            }
+
+            input {
+                width: 1rem;
+                aspect-ratio: 1 / 1;
+                border: 1px solid rgb(163, 163, 163);
+                border-radius: 0.6rem;
+                cursor: pointer;
+            }
+        }
+
+        .forgotPasswordBtn {
+            float: right;
+            color: rgb(71, 71, 247);
+            font-size: 0.8rem;
+            font-weight: bold;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .submitBtn {
+            width: 100%;
+            padding: 0.6rem 0;
+            margin-top: 4rem;
+            background-color: rgb(71, 71, 247);
+            color: white;
+            text-align: center;
+            border-radius: 0.6rem;
+            font-weight: 600;
+        }
+    }
+}

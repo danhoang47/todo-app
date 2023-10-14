@@ -2,7 +2,7 @@
 import "./Category.styles.scss"
 
 export type CategoryProps<T> = {
-    header: React.ReactNode,
+    header?: React.ReactNode,
     data: T[],
     render: (item: T) => React.ReactNode,
 	extraItem?: React.ReactNode,

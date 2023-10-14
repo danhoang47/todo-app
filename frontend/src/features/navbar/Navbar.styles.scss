@@ -42,7 +42,13 @@
 
 	.expandMenuBtn {
 		position: absolute;
-		bottom: 1.4rem;
+		bottom: 6.4rem;
 		right: 1.6rem;
+		z-index: 1;
+		transition: opacity 0.15s linear;
+
+		&:hover {
+			opacity: 0.6;
+		}
 	}
 }

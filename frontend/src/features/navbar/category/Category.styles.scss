@@ -24,7 +24,8 @@
             position: relative;
             align-items: center;
 
-            &.selected {
+            .icon {
+                color: gray;
             }
 
             .listItemColor {
@@ -37,14 +38,15 @@
 
             .categoryItemTitle {
                 text-transform: capitalize;
+                overflow-x: hidden;
+                white-space: nowrap;
             }
 
             &:hover,
             &:focus {
                 outline: none;
-                background-color: rgb(102, 102, 102);
+                background-color: rgb(216, 216, 216);
                 border-radius: 9999px;
-                color: white;
             }
         }
     }

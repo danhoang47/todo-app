@@ -2,11 +2,11 @@ import { memo, useState } from "react";
 import { faAnglesLeft, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 
 import { IconButton } from "@/common/ui";
-import TaskCategory from "./TaskCategory";
-import ListCategory from "./ListCategory";
+import { TaskCategory, ListCategory } from "./category";
+import NavbarHeader from "./header";
+import NavbarFooter from "./footer";
 
 import "./Navbar.styles.scss";
-import NavbarHeader from "./NavbarHeader";
 
 function Navbar() {
 	const [isNavbarExpand, setNavbarExpand] = useState(true);
@@ -25,6 +25,7 @@ function Navbar() {
 				buttonClassName="expandMenuBtn"
 				onClick={() => setNavbarExpand(!isNavbarExpand)}
 			/>
+			<NavbarFooter />
 		</nav>
 	);
 }
